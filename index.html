@@ -1,235 +1,531 @@
 <!DOCTYPE html>
+<!--
+  Built by a pharmacist and an AI.
+  No analytics. No cookies. No tracking.
+  We don't need your data. That's the whole point.
+
+  If you're reading source, you might be our kind of people.
+  mmaughan@germpharm.org
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GermPharm LLC</title>
+    <meta name="description" content="We build AI partners for people solving real problems in healthcare. Local memory. Human attribution. Real results.">
+
+    <!-- Social -->
+    <meta property="og:title" content="GermPharm LLC">
+    <meta property="og:description" content="Healthcare operations powered by AI that remembers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://germpharm.org">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@MatthewMaughan">
+    <meta name="twitter:title" content="GermPharm LLC">
+    <meta name="twitter:description" content="Healthcare operations powered by AI that remembers.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='none' stroke='%230a0a0a' stroke-width='2.5'/><line x1='16' y1='16' x2='28' y2='16' stroke='%230a0a0a' stroke-width='2.5'/></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --black: #0a0a0a;
+            --dark: #1a1a1a;
+            --mid: #555;
+            --light: #999;
+            --faint: #e0e0e0;
+            --bg: #fafafa;
+            --white: #fff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: #1a1a1a;
-            background: #fafafa;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Subtle noise texture — adds warmth you feel before you see */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.018;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+            z-index: 9999;
+        }
+
+        ::selection {
+            background: var(--black);
+            color: var(--white);
         }
 
         .container {
             max-width: 720px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 36px;
         }
 
-        /* Header */
+        /* ---- Header ---- */
         header {
             padding: 48px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            opacity: 0;
+            animation: fadeDown 0.8s ease-out 0.1s forwards;
         }
 
-        header h1 {
-            font-size: 18px;
+        .wordmark {
+            font-size: 13px;
             font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--black);
+            transition: letter-spacing 0.4s ease;
+            cursor: default;
+        }
+
+        .wordmark:hover {
+            letter-spacing: 4px;
+        }
+
+        .wordmark-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--light);
             letter-spacing: 0.5px;
-            color: #1a1a1a;
         }
 
-        /* Hero */
+        /* ---- Hero ---- */
         .hero {
-            padding: 80px 0 64px;
+            padding: 88px 0 72px;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.3s forwards;
         }
 
-        .hero h2 {
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 1.15;
-            color: #0a0a0a;
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--black);
             margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
         }
 
         .hero p {
-            font-size: 20px;
-            color: #555;
-            max-width: 600px;
+            font-size: 17px;
+            color: var(--mid);
+            max-width: 520px;
+            font-weight: 400;
         }
 
-        /* Sections */
+        /* ---- Dividers ---- */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, var(--faint) 0%, var(--faint) 40%, transparent 100%);
+        }
+
+        /* ---- Sections ---- */
         section {
-            padding: 48px 0;
-            border-top: 1px solid #e5e5e5;
+            padding: 64px 0;
         }
 
-        section h3 {
-            font-size: 13px;
-            font-weight: 600;
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #999;
-            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: var(--light);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 1px;
+            background: var(--light);
+            flex-shrink: 0;
         }
 
         section p {
-            font-size: 17px;
-            color: #333;
+            font-size: 16px;
+            color: var(--dark);
             margin-bottom: 16px;
+            font-weight: 400;
         }
 
         section p:last-child {
             margin-bottom: 0;
         }
 
+        .muted {
+            color: var(--mid);
+        }
+
+        .lead {
+            font-size: 17px;
+        }
+
+        /* ---- Stats ---- */
         .stat-row {
             display: flex;
             gap: 48px;
-            margin: 24px 0;
+            margin: 40px 0 8px;
             flex-wrap: wrap;
         }
 
         .stat {
             flex: 1;
-            min-width: 140px;
+            min-width: 130px;
         }
 
         .stat .number {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 36px;
-            font-weight: 700;
-            color: #0a0a0a;
+            font-weight: 500;
+            color: var(--black);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
         }
 
         .stat .label {
-            font-size: 14px;
-            color: #777;
-            margin-top: 4px;
-        }
-
-        /* Vision */
-        .vision-quote {
-            font-size: 22px;
-            font-weight: 500;
+            font-size: 13px;
+            color: var(--light);
+            margin-top: 10px;
             line-height: 1.5;
-            color: #1a1a1a;
-            margin: 24px 0;
-            padding-left: 20px;
-            border-left: 3px solid #1a1a1a;
         }
 
-        /* Brands */
+        /* ---- Vision Block ---- */
+        .vision-block {
+            margin: 36px 0 0;
+            padding: 40px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Living glow — neural activity */
+        .vision-block::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.025) 0%, transparent 40%);
+            animation: glow-drift 18s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes glow-drift {
+            0% { transform: translate(0%, 0%) rotate(0deg); }
+            100% { transform: translate(8%, 4%) rotate(1deg); }
+        }
+
+        .vision-block p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: 20px;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vision-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .vision-block .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* ---- Brands ---- */
         .brands {
             display: flex;
-            gap: 32px;
-            margin-top: 16px;
-            flex-wrap: wrap;
+            gap: 1px;
+            margin-top: 28px;
+            background: var(--faint);
+            border: 1px solid var(--faint);
+            border-radius: 3px;
+            overflow: hidden;
         }
 
         .brand {
             flex: 1;
-            min-width: 200px;
-            padding: 20px;
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
+            min-width: 180px;
+            padding: 28px;
+            background: var(--white);
+            transition: background 0.35s ease;
+        }
+
+        .brand:hover {
+            background: #f5f5f5;
         }
 
         .brand h4 {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             margin-bottom: 8px;
+            color: var(--black);
         }
 
         .brand p {
-            font-size: 14px;
-            color: #666;
+            font-size: 13px;
+            color: var(--mid);
             margin-bottom: 0;
+            line-height: 1.55;
         }
 
-        /* Contact */
-        .contact-links {
+        /* ---- Closing Tagline ---- */
+        .closing {
+            padding: 72px 0;
+            text-align: center;
+        }
+
+        .tagline {
             display: flex;
-            gap: 32px;
-            margin-top: 16px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .tagline span {
+            font-size: 19px;
+            font-weight: 500;
+            color: var(--black);
+            letter-spacing: -0.2px;
+            line-height: 1.6;
+        }
+
+        /* ---- Contact ---- */
+        .contact-row {
+            display: flex;
+            gap: 36px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
-        .contact-links a {
-            font-size: 17px;
-            color: #1a1a1a;
+        .contact-row a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--dark);
             text-decoration: none;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 2px;
-            transition: border-color 0.2s;
+            position: relative;
+            padding-bottom: 3px;
         }
 
-        .contact-links a:hover {
-            border-color: #1a1a1a;
+        .contact-row a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s ease;
         }
 
-        /* Footer */
+        .contact-row a:hover::after {
+            width: 100%;
+        }
+
+        /* Keyboard navigation — accessibility as craft */
+        a:focus-visible {
+            outline: 2px solid var(--black);
+            outline-offset: 4px;
+        }
+
+        /* ---- Footer ---- */
         footer {
-            padding: 48px 0;
-            border-top: 1px solid #e5e5e5;
+            padding: 40px 0;
         }
 
         footer p {
-            font-size: 14px;
-            color: #999;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--light);
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .hero h2 {
-                font-size: 32px;
+        /* ---- Scroll Reveal ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children for the tagline */
+        .stagger .stagger-child {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .stagger .stagger-child:nth-child(2) { transition-delay: 0.12s; }
+        .stagger .stagger-child:nth-child(3) { transition-delay: 0.24s; }
+
+        .stagger.visible .stagger-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- Load Animations ---- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 24px;
             }
 
-            .hero p {
-                font-size: 18px;
+            .hero {
+                padding: 64px 0 48px;
             }
 
             .stat-row {
-                gap: 24px;
+                gap: 28px;
             }
 
             .stat .number {
                 font-size: 28px;
             }
+
+            .brands {
+                flex-direction: column;
+            }
+
+            .vision-block {
+                padding: 28px;
+            }
+
+            .closing {
+                padding: 48px 0;
+            }
+
+            .tagline span {
+                font-size: 16px;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        /* ---- Reduced Motion ---- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal, .stagger .stagger-child {
+                opacity: 1;
+                transform: none;
+            }
+
+            header, .hero {
+                opacity: 1;
+            }
+        }
+
+        /* ---- Print ---- */
+        @media print {
+            body::after { display: none; }
+            .reveal, .stagger .stagger-child { opacity: 1; transform: none; }
+            header, .hero { opacity: 1; }
+            .vision-block { background: #333; -webkit-print-color-adjust: exact; }
+            .contact-row a::after { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>GermPharm LLC</h1>
+            <div class="wordmark">GermPharm</div>
+            <div class="wordmark-sub">Lebanon, NH</div>
         </header>
 
         <div class="hero">
-            <h2>Healthcare operations powered by AI that remembers.</h2>
+            <h1>Healthcare operations<br>powered by <strong>AI that remembers.</strong></h1>
             <p>We build AI partners for people solving real problems in healthcare. Local memory. Human attribution. Real results.</p>
         </div>
 
-        <section>
-            <h3>Who</h3>
-            <p>Founded by Matthew J. Maughan, PharmD, MHCDS, CPEL. Director of Telepharmacy at Dartmouth Health. Designed pharmacy operations for a new hospital in Qatar. Led 340B programs at three institutions. Licensed in six states.</p>
+        <div class="divider"></div>
+
+        <section class="reveal">
+            <h3 class="section-label">01 Who</h3>
+            <p class="lead">Founded by Matthew J. Maughan, PharmD, MHCDS, CPEL.</p>
+            <p class="muted">Director of Telepharmacy at Dartmouth Health. Designed pharmacy operations for a new hospital in Qatar. Led 340B programs at three institutions. Licensed in six states.</p>
 
             <div class="stat-row">
                 <div class="stat">
-                    <div class="number">34</div>
-                    <div class="label">Telepharmacy sites across 5 states</div>
+                    <div class="number" data-target="34">0</div>
+                    <div class="label">Telepharmacy sites<br>across 5 states</div>
                 </div>
                 <div class="stat">
-                    <div class="number">196</div>
-                    <div class="label">Position staffing plan designed for Qatar</div>
+                    <div class="number" data-target="196">0</div>
+                    <div class="label">Position staffing plan<br>designed for Qatar</div>
                 </div>
                 <div class="stat">
-                    <div class="number">10+</div>
-                    <div class="label">Years directing pharmacy operations</div>
+                    <div class="number" data-target="10" data-suffix="+">0</div>
+                    <div class="label">Years directing<br>pharmacy operations</div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h3>What We Do</h3>
-            <p>Pharmaceutical products, healthcare technology, and AI-augmented operations.</p>
+        <div class="divider"></div>
+
+        <section class="reveal">
+            <h3 class="section-label">02 What We Do</h3>
+            <p class="muted">Pharmaceutical products, healthcare technology, and AI-augmented operations.</p>
 
             <div class="brands">
                 <div class="brand">
@@ -238,39 +534,98 @@
                 </div>
                 <div class="brand">
                     <h4>Osteo Density International</h4>
-                    <p>Bone health innovation. Clinical research and international distribution.</p>
+                    <p>Pharmaceutical research and international distribution.</p>
                 </div>
                 <div class="brand">
                     <h4>Telepharmacy</h4>
-                    <p>AI-augmented pharmacy operations across rural healthcare networks.</p>
+                    <p>AI-augmented pharmacy operations across rural networks.</p>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h3>What We're Building</h3>
-            <p>The current AI model trains on the internet, serves answers from a black box, and credits nobody. Knowledge extracted, anonymized, commoditized.</p>
+        <div class="divider"></div>
+
+        <section class="reveal">
+            <h3 class="section-label">03 What We're Building</h3>
+            <p class="muted">The current AI model trains on the internet, serves answers from a black box, and credits nobody. Knowledge extracted, anonymized, commoditized.</p>
             <p>We're building the opposite.</p>
 
-            <div class="vision-quote">
-                The AI becomes the routing layer, not the knowledge layer. It figures out which human experience is most relevant to your problem and connects you to it. The model doesn't replace the humans. It makes the humans findable.
+            <div class="vision-block">
+                <p><span class="highlight">The AI becomes the routing layer, not the knowledge layer.</span> It figures out which human experience is most relevant to your problem and connects you to it. The model doesn't replace the humans. It makes the humans findable.</p>
+                <p>Every node is a real person solving real problems. Attribution is structural, not optional. Privacy is the architecture, not a feature. Everything stays local unless you choose to share.</p>
             </div>
-
-            <p>Every node is a real person solving real problems. The memory files are structured experience, not scraped text. Attribution is structural, not optional. Privacy is the architecture, not a feature. Everything stays local unless you choose to share.</p>
-            <p>The model is the scaffolding. The memory is the product. The network is the moat.</p>
         </section>
 
-        <section>
-            <h3>Contact</h3>
-            <div class="contact-links">
+        <div class="divider"></div>
+
+        <div class="closing reveal stagger">
+            <div class="tagline">
+                <span class="stagger-child">The model is the scaffolding.</span>
+                <span class="stagger-child">The memory is the product.</span>
+                <span class="stagger-child">The network is the moat.</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <section class="reveal">
+            <h3 class="section-label">04 Contact</h3>
+            <div class="contact-row">
                 <a href="mailto:mmaughan@germpharm.org">mmaughan@germpharm.org</a>
                 <a href="https://x.com/MatthewMaughan">@MatthewMaughan</a>
+                <a href="https://github.com/germpharm">GitHub</a>
             </div>
         </section>
 
-        <footer>
-            <p>&copy; 2026 GermPharm LLC. Lebanon, NH.</p>
+        <footer class="reveal">
+            <p>&copy; 2026 GermPharm LLC</p>
         </footer>
     </div>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Animate counters inside this element
+                    entry.target.querySelectorAll('.number[data-target]').forEach(animateCounter);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        function animateCounter(el) {
+            var target = parseInt(el.dataset.target);
+            var suffix = el.dataset.suffix || '';
+            var duration = 1200;
+            var start = performance.now();
+
+            function update(now) {
+                var elapsed = now - start;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Respect reduced motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.number[data-target]').forEach(function(el) {
+                el.textContent = el.dataset.target + (el.dataset.suffix || '');
+            });
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }
+    </script>
 </body>
 </html>
