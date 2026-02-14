@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GermPharm LLC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1a1a1a;
+            background: #fafafa;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 48px 0 0;
+        }
+
+        header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #1a1a1a;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 64px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #0a0a0a;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #555;
+            max-width: 600px;
+        }
+
+        /* Sections */
+        section {
+            padding: 48px 0;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        section h3 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            margin-bottom: 24px;
+        }
+
+        section p {
+            font-size: 17px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-row {
+            display: flex;
+            gap: 48px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .stat .number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0a0a0a;
+        }
+
+        .stat .label {
+            font-size: 14px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        /* Vision */
+        .vision-quote {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1a1a1a;
+            margin: 24px 0;
+            padding-left: 20px;
+            border-left: 3px solid #1a1a1a;
+        }
+
+        /* Brands */
+        .brands {
+            display: flex;
+            gap: 32px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+        }
+
+        .brand h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .brand p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            gap: 32px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            font-size: 17px;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .contact-links a:hover {
+            border-color: #1a1a1a;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .stat-row {
+                gap: 24px;
+            }
+
+            .stat .number {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GermPharm LLC</h1>
+        </header>
+
+        <div class="hero">
+            <h2>Healthcare operations powered by AI that remembers.</h2>
+            <p>We build AI partners for people solving real problems in healthcare. Local memory. Human attribution. Real results.</p>
+        </div>
+
+        <section>
+            <h3>Who</h3>
+            <p>Founded by Matthew J. Maughan, PharmD, MHCDS, CPEL. Director of Telepharmacy at Dartmouth Health. Built pharmacy operations in Qatar from scratch. Led 340B programs at three institutions. Licensed in six states.</p>
+
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="number">39</div>
+                    <div class="label">Telepharmacy sites across 6 states</div>
+                </div>
+                <div class="stat">
+                    <div class="number">196</div>
+                    <div class="label">Staff built and managed in Qatar</div>
+                </div>
+                <div class="stat">
+                    <div class="number">10+</div>
+                    <div class="label">Years directing pharmacy operations</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>What We Do</h3>
+            <p>Pharmaceutical products, healthcare technology, and AI-augmented operations.</p>
+
+            <div class="brands">
+                <div class="brand">
+                    <h4>MySuperOil</h4>
+                    <p>Premium supplement brand. Direct to consumer and wholesale.</p>
+                </div>
+                <div class="brand">
+                    <h4>Osteo Density International</h4>
+                    <p>Bone health innovation. Clinical research and international distribution.</p>
+                </div>
+                <div class="brand">
+                    <h4>Telepharmacy</h4>
+                    <p>AI-augmented pharmacy operations across rural healthcare networks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>What We're Building</h3>
+            <p>The current AI model trains on the internet, serves answers from a black box, and credits nobody. Knowledge extracted, anonymized, commoditized.</p>
+            <p>We're building the opposite.</p>
+
+            <div class="vision-quote">
+                The AI becomes the routing layer, not the knowledge layer. It figures out which human experience is most relevant to your problem and connects you to it. The model doesn't replace the humans. It makes the humans findable.
+            </div>
+
+            <p>Every node is a real person solving real problems. The memory files are structured experience, not scraped text. Attribution is structural, not optional. Privacy is the architecture, not a feature. Everything stays local unless you choose to share.</p>
+            <p>The model is the scaffolding. The memory is the product. The network is the moat.</p>
+        </section>
+
+        <section>
+            <h3>Contact</h3>
+            <div class="contact-links">
+                <a href="mailto:mmaughan@germpharm.org">mmaughan@germpharm.org</a>
+                <a href="https://x.com/MatthewMaughan">@MatthewMaughan</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 GermPharm LLC. Lebanon, NH.</p>
+        </footer>
+    </div>
+</body>
+</html>
