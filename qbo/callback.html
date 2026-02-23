@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBooks Authorization — GermPharm</title>
+    <style>
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #fafafa; color: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; padding: 48px; max-width: 600px; width: 90%; }
+        h1 { font-size: 20px; font-weight: 600; margin: 0 0 16px; }
+        .code-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; padding: 16px; font-family: monospace; font-size: 13px; word-break: break-all; margin: 16px 0; user-select: all; }
+        .label { font-size: 13px; color: #999; margin-bottom: 4px; }
+        p { font-size: 15px; color: #555; line-height: 1.6; }
+        .error { color: #c00; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>QuickBooks Authorization</h1>
+        <div id="result"></div>
+    </div>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var code = params.get('code');
+        var realmId = params.get('realmId');
+        var error = params.get('error');
+        var el = document.getElementById('result');
+
+        if (error) {
+            el.innerHTML = '<p class="error">Authorization failed: ' + error + '</p>';
+        } else if (code && realmId) {
+            el.innerHTML =
+                '<p>Authorization successful. Copy these values and paste them into your terminal.</p>' +
+                '<div class="label">Authorization Code</div>' +
+                '<div class="code-box" id="code">' + code + '</div>' +
+                '<div class="label">Realm ID (Company ID)</div>' +
+                '<div class="code-box" id="realm">' + realmId + '</div>' +
+                '<p>You can close this window after copying.</p>';
+        } else {
+            el.innerHTML = '<p class="error">No authorization code received. Try the auth flow again.</p>';
+        }
+    </script>
+</body>
+</html>
