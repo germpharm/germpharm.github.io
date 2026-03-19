@@ -62,7 +62,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Subtle noise texture — adds warmth you feel before you see */
+        /* Subtle noise texture */
         body::after {
             content: '';
             position: fixed;
@@ -235,7 +235,6 @@
             overflow: hidden;
         }
 
-        /* Living glow — neural activity */
         .vision-block::before {
             content: '';
             position: absolute;
@@ -310,6 +309,56 @@
             line-height: 1.55;
         }
 
+        .brand ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0;
+        }
+
+        .brand ul li {
+            font-size: 12px;
+            color: var(--light);
+            line-height: 1.6;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .brand ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--faint);
+        }
+
+        /* ---- Reach Block ---- */
+        .reach-list {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 28px 0 24px;
+        }
+
+        .reach-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--black);
+            letter-spacing: 0.5px;
+        }
+
+        .reach-item .reach-detail {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--light);
+            display: block;
+            margin-top: 4px;
+        }
+
         /* ---- Closing Tagline ---- */
         .closing {
             padding: 72px 0;
@@ -362,7 +411,6 @@
             width: 100%;
         }
 
-        /* Keyboard navigation — accessibility as craft */
         a:focus-visible {
             outline: 2px solid var(--black);
             outline-offset: 4px;
@@ -402,7 +450,6 @@
             transform: translateY(0);
         }
 
-        /* Staggered children for the tagline */
         .stagger .stagger-child {
             opacity: 0;
             transform: translateY(12px);
@@ -466,6 +513,10 @@
                 flex-direction: column;
                 gap: 16px;
             }
+
+            .reach-list {
+                gap: 24px;
+            }
         }
 
         /* ---- Reduced Motion ---- */
@@ -510,59 +561,114 @@
 
         <div class="divider"></div>
 
+        <!-- 01 WHO -->
         <section class="reveal">
             <h3 class="section-label">01 Who</h3>
-            <p class="lead">Founded by Matthew J. Maughan, PharmD, MHCDS, CPEL.</p>
-            <p class="muted">Director of Telepharmacy at Dartmouth Health. Designed pharmacy operations for a new hospital in Qatar. Led 340B programs at three institutions. Licensed in six states.</p>
+            <p class="lead">Founded by <strong>Matthew J. Maughan</strong>, PharmD, MHCDS, CPEL.</p>
+            <p class="muted">Matt built and operates the largest independent telepharmacy network in New England&mdash;34 hospitals across five states. He designed pharmacy operations for a new hospital in Qatar and holds active pharmacist licenses in six states. He formulates supplements backed by published research, advances clinical trial programs across two continents, and builds AI governance tools for healthcare.</p>
+            <p class="muted">GermPharm is how all of that connects.</p>
 
             <div class="stat-row">
                 <div class="stat">
                     <div class="number" data-target="34">0</div>
-                    <div class="label">Telepharmacy sites<br>across 5 states</div>
+                    <div class="label">Hospitals in the<br>telepharmacy network</div>
                 </div>
                 <div class="stat">
-                    <div class="number" data-target="196">0</div>
-                    <div class="label">Position staffing plan<br>designed for Qatar</div>
+                    <div class="number" data-target="5">0</div>
+                    <div class="label">States<br>covered</div>
                 </div>
                 <div class="stat">
-                    <div class="number" data-target="10" data-suffix="+">0</div>
-                    <div class="label">Years directing<br>pharmacy operations</div>
+                    <div class="number" data-target="6">0</div>
+                    <div class="label">Active pharmacist<br>licenses</div>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="number" data-prefix="$" data-target="350" data-suffix="K">0</div>
+                    <div class="label">Estimated annual savings<br>per hospital contract</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="22" data-suffix="+">0</div>
+                    <div class="label">Peer-reviewed studies<br>supporting our ingredients</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="2">0</div>
+                    <div class="label">Continents with active<br>clinical programs</div>
                 </div>
             </div>
         </section>
 
         <div class="divider"></div>
 
+        <!-- 02 WHAT WE DO -->
         <section class="reveal">
             <h3 class="section-label">02 What We Do</h3>
-            <p class="muted">Pharmaceutical products, healthcare technology, and AI-augmented operations.</p>
+            <p class="muted">Pharmaceutical products, clinical research, healthcare technology, and AI-augmented operations.</p>
 
             <div class="brands">
                 <div class="brand">
+                    <h4>Telepharmacy</h4>
+                    <p>AI-augmented pharmacy operations powering a 34-hospital network across rural New England.</p>
+                    <ul>
+                        <li>Remote verification &amp; clinical decision support</li>
+                        <li>$350K estimated annual savings per site</li>
+                        <li>HIPAA-compliant with full audit trails</li>
+                    </ul>
+                </div>
+                <div class="brand">
                     <h4>MySuperOil</h4>
-                    <p>Premium supplement brand. Direct to consumer and wholesale.</p>
+                    <p>Clinically-backed joint health supplements. 20 omega isomers from New Zealand Green Lipped Mussel oil plus hyaluronic acid in a single daily capsule.</p>
+                    <ul>
+                        <li>22+ peer-reviewed studies on key ingredients</li>
+                        <li>40% pain reduction documented</li>
+                        <li>Available DTC and wholesale</li>
+                    </ul>
                 </div>
                 <div class="brand">
                     <h4>Osteo Density International</h4>
-                    <p>Pharmaceutical research and international distribution.</p>
-                </div>
-                <div class="brand">
-                    <h4>Telepharmacy</h4>
-                    <p>AI-augmented pharmacy operations across rural networks.</p>
+                    <p>Currently advancing a proprietary formulation that is beginning clinical trials, with manufacturing and CRO partnerships in place across the US and India.</p>
                 </div>
             </div>
         </section>
 
         <div class="divider"></div>
 
+        <!-- 03 WHERE WE REACH -->
         <section class="reveal">
-            <h3 class="section-label">03 What We're Building</h3>
+            <h3 class="section-label">03 Where We Reach</h3>
+            <p class="muted">GermPharm operates across the US and is expanding internationally, building partnerships that connect clinical pharmacy expertise with the markets that need it most.</p>
+
+            <div class="reach-list">
+                <div class="reach-item">
+                    United States
+                    <span class="reach-detail">34 hospitals &middot; 5 states</span>
+                </div>
+                <div class="reach-item">
+                    Saudi Arabia
+                    <span class="reach-detail">Late-stage telepharmacy discussions</span>
+                </div>
+                <div class="reach-item">
+                    India
+                    <span class="reach-detail">Clinical research partnerships</span>
+                </div>
+            </div>
+
+            <p class="muted">In Saudi Arabia, GermPharm is in active discussions to bring telepharmacy and clinical pharmacy services to the Gulf region, aligned with Vision 2030's healthcare transformation goals.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- 04 HOW WE BUILD -->
+        <section class="reveal">
+            <h3 class="section-label">04 How We Build</h3>
             <p class="muted">The current AI model trains on the internet, serves answers from a black box, and credits nobody. Knowledge extracted, anonymized, commoditized.</p>
             <p>We're building the opposite.</p>
 
             <div class="vision-block">
                 <p><span class="highlight">The AI becomes the routing layer, not the knowledge layer.</span> It figures out which human experience is most relevant to your problem and connects you to it. The model doesn't replace the humans. It makes the humans findable.</p>
                 <p>Every node is a real person solving real problems. Attribution is structural, not optional. Privacy is the architecture, not a feature. Everything stays local unless you choose to share.</p>
+                <p><span class="highlight">Every system we deploy runs under Charter</span>&mdash;our governance framework that enforces hard constraints, requires human judgment above defined thresholds, and generates transparent audit trails. Charter isn't a marketing claim. It's the operating system our AI agents run on.</p>
             </div>
         </section>
 
@@ -578,8 +684,9 @@
 
         <div class="divider"></div>
 
+        <!-- 05 CONTACT -->
         <section class="reveal">
-            <h3 class="section-label">04 Contact</h3>
+            <h3 class="section-label">05 Contact</h3>
             <div class="contact-row">
                 <a href="mailto:mmaughan@germpharm.org">mmaughan@germpharm.org</a>
                 <a href="https://x.com/MatthewMaughan">@MatthewMaughan</a>
@@ -598,7 +705,6 @@
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Animate counters inside this element
                     entry.target.querySelectorAll('.number[data-target]').forEach(animateCounter);
                     observer.unobserve(entry.target);
                 }
@@ -613,6 +719,7 @@
         function animateCounter(el) {
             var target = parseInt(el.dataset.target);
             var suffix = el.dataset.suffix || '';
+            var prefix = el.dataset.prefix || '';
             var duration = 1200;
             var start = performance.now();
 
@@ -620,7 +727,7 @@
                 var elapsed = now - start;
                 var progress = Math.min(elapsed / duration, 1);
                 var eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.round(eased * target) + suffix;
+                el.textContent = prefix + Math.round(eased * target) + suffix;
                 if (progress < 1) requestAnimationFrame(update);
             }
 
@@ -630,7 +737,7 @@
         // Respect reduced motion
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             document.querySelectorAll('.number[data-target]').forEach(function(el) {
-                el.textContent = el.dataset.target + (el.dataset.suffix || '');
+                el.textContent = (el.dataset.prefix || '') + el.dataset.target + (el.dataset.suffix || '');
             });
             document.querySelectorAll('.reveal').forEach(function(el) {
                 el.classList.add('visible');
